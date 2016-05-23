@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "handyman": "^1.x",
+    "gulp": "^3.x"
+  }
+}
