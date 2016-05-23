@@ -2,9 +2,8 @@
 
 var ncp = require('ncp').ncp;
 
-var NewTask = function () {
-  var templates   = __remote + '../lib/templates';
-  var destination = process.argv[3];
+var NewTask = function (destination) {
+  var templates = __remote + '../lib/templates';
 
   ncp(templates, destination, function (error) {
     if (error) {

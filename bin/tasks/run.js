@@ -1,12 +1,7 @@
 'use strict';
 
-var gulp      = require('gulp');
-var plugins   = require('gulp-load-plugins')({ pattern: ['*', '!jshint'] });
-var config    = require(__local + 'handyman.json');
-
-var BuildTask = function () {
-  var proxy       = process.argv[3];
-  var extraConfig = config.proxy ? {
+var RunTask = function (gulp, plugins, config) {
+  plugins.browserSync.init(Object.assign({ notify: false }, config.proxy ? {
     proxy: {
       target: config.proxy,
       proxyReq: [
@@ -15,9 +10,7 @@ var BuildTask = function () {
         }
       ]
     }
-  } : { server: './' };
-
-  plugins.browserSync.init(Object.assign({ notify: false }, extraConfig));
+  } : { server: './' }));
 
   gulp.watch(config.source + '/assets/icons/*.svg', ['icons']);
   gulp.watch(config.source + '/styles/**/*', ['styles']);
@@ -26,4 +19,4 @@ var BuildTask = function () {
   gulp.watch(config.source + '/templates/**/*.{twig,html}', ['templates']);
 };
 
-module.exports = BuildTask;
+module.exports = RunTask;

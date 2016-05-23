@@ -18,10 +18,7 @@ var stylesTask = function (gulp, plugins, config, helpers) {
       .pipe(plugins.plumber(helpers.onError))
       .pipe(plugins.scssLint())
       .pipe(plugins.cssGlobbing({ extensions: ['.scss', '.css'] }))
-      .pipe(plugins.sass({ outputStyle: 'expanded', includePaths: [
-        config.source + '/bower_components',
-        'node_modules'
-      ] }))
+      .pipe(plugins.sass({ outputStyle: 'expanded', includePaths: ['bower_components', 'node_modules'] }))
       .pipe(plugins.postcss(postcssPlugins))
       .pipe(plugins.rename({ suffix: '.min' }))
       .pipe(plugins.minifyCss({ keepSpecialComments: 1 }));
