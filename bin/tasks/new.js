@@ -2,7 +2,7 @@
 
 var ncp = require('ncp').ncp;
 
-var NewTask = function (destination) {
+module.exports = function (destination) {
   var templates = __remote + '../lib/templates';
 
   ncp(templates, destination, function (error) {
@@ -17,5 +17,3 @@ var NewTask = function (destination) {
     console.log('gulp');
   });
 };
-
-module.exports = NewTask;

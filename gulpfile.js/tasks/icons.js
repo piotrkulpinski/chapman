@@ -1,6 +1,6 @@
 'use strict';
 
-var iconsTask = function (gulp, plugins, config, helpers) {
+module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('icons', function () {
     var src = config.source + '/assets/icons/*.svg';
     var dest = config.source + '/assets/fonts';
@@ -17,7 +17,7 @@ var iconsTask = function (gulp, plugins, config, helpers) {
       .on('glyphs', function (glyphs, options) {
         options.glyphs = glyphs;
 
-        var stream = gulp.src('gulpfile.js/_icons.scss')
+        gulp.src('gulpfile.js/_icons.scss')
           .pipe(plugins.consolidate('lodash', options))
           .pipe(gulp.dest(config.source + '/styles/common'));
       })
@@ -27,5 +27,3 @@ var iconsTask = function (gulp, plugins, config, helpers) {
     return stream;
   });
 };
-
-module.exports = iconsTask;

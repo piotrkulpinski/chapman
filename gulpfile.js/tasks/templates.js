@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var templatesTask = function (gulp, plugins, config, helpers) {
+module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('templates', function () {
     var src = [config.source + '/templates/*.{twig,html}'];
 
@@ -14,5 +14,3 @@ var templatesTask = function (gulp, plugins, config, helpers) {
     return helpers.destToTargets(stream, path.basename(__filename, '.js'), null, plugins.browserSync.reload);
   });
 };
-
-module.exports = templatesTask;

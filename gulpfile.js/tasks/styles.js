@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var stylesTask = function (gulp, plugins, config, helpers) {
+module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('styles', function () {
     var src = config.source + '/styles/**/*.scss';
 
@@ -29,5 +29,3 @@ var stylesTask = function (gulp, plugins, config, helpers) {
     return stream;
   });
 };
-
-module.exports = stylesTask;

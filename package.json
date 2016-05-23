@@ -20,7 +20,6 @@
     "email": "piotr@kulpinski.pl",
     "url": "http://kulpinski.pl"
   },
-  "main": "lib/handyman.js",
   "bin": {
     "handyman": "./bin/handyman.js"
   },

@@ -1,6 +1,6 @@
 'use strict';
 
-var helpers = function (gulp, config) {
+module.exports = function (gulp, config) {
   return {
     onError: function (error) {
       console.error(error.message + '\n');
@@ -24,5 +24,3 @@ var helpers = function (gulp, config) {
     }
   }
 };
-
-module.exports = helpers;

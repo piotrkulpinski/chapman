@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var scriptsTask = function (gulp, plugins, config, helpers) {
+module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('scripts', function () {
     var src = config.source + '/scripts/**/*.js';
 
@@ -21,5 +21,3 @@ var scriptsTask = function (gulp, plugins, config, helpers) {
     });
   });
 };
-
-module.exports = scriptsTask;
