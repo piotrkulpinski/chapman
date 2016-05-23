@@ -1,0 +1,34 @@
+/*
+** Common - Icons
+** -----------------------------------------------------------------------------*/
+
+@font-face {
+  font-family: '<%%= fontName %>';
+  src: font('<%%= fontName %>.eot?#iefix') format('eot'),
+       font('<%%= fontName %>.woff') format('woff'),
+       font('<%%= fontName %>.woff2') format('woff2'),
+       font('<%%= fontName %>.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.<%%= className %> {
+  display: inline-block;
+  font-family: '<%%= fontName %>';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: top;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+<%% _.each(glyphs, function (glyph) { %>
+.<%%= className %>_<%%= glyph.name %>::before {
+  content: '\<%%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>';
+}
+<%% }); %>

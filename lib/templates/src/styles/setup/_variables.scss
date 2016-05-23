@@ -22,22 +22,29 @@ $font-line-height:      1.2 !default;
 // Base path for assets
 $base-path:             '..' !default;
 
-// Breakpoint definitions
+// Grid definitions
 $breakpoints: (
   xs: (
     min-width: 0,
-    container: 480px
+    container: 450px,
+    gutter: 20px,
+    columns: 2
   ),
   sm: (
     min-width: 490px,
-    container: 480px
+    gutter: 20px,
+    columns: 4
   ),
   md: (
     min-width: 680px,
-    container: 610px
+    container: 620px,
+    gutter: 30px,
+    columns: 6
   ),
   lg: (
     min-width: 992px,
-    container: 1040px
+    container: 1032px,
+    gutter: 30px,
+    columns: 12
   )
-);
+) !default;

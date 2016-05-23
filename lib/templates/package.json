@@ -1,6 +1,5 @@
 {
-  "devDependencies": {
-    "handyman": "^1.x",
-    "gulp": "^3.x"
+  "dependencies": {
+    "flexgridy": "^0.x"
   }
 }
