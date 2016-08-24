@@ -8,7 +8,7 @@ module.exports = function (gulp, plugins, config, helpers) {
     var stream = gulp.src(src)
       .pipe(plugins.plumber(helpers.onError))
       .pipe(plugins.iconfont({
-        formats: ['eot', 'ttf', 'woff', 'woff2'],
+        formats: ['woff', 'woff2'],
         fontName: 'iconfont',
         className: 'icon',
         normalize: true,
@@ -17,7 +17,7 @@ module.exports = function (gulp, plugins, config, helpers) {
       .on('glyphs', function (glyphs, options) {
         options.glyphs = glyphs;
 
-        gulp.src('gulpfile.js/_icons.scss')
+        gulp.src(__dirname + '/../_icons.scss')
           .pipe(plugins.consolidate('lodash', options))
           .pipe(gulp.dest(config.source + '/styles/common'));
       })
