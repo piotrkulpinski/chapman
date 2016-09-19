@@ -6,7 +6,7 @@ module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('scripts', function () {
     var src = config.source + '/scripts/**/*.js';
 
-    var stream = gulp.src(src)
+    var stream = gulp.src(config.source + '/scripts/main.js')
       .pipe(plugins.plumber(helpers.onError))
       .pipe(plugins.browserify())
       .pipe(plugins.rename({ suffix: '.min' }))
