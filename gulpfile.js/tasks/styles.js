@@ -18,11 +18,19 @@ module.exports = function (gulp, plugins, config, helpers) {
       .pipe(plugins.scssLint())
       .pipe(plugins.cssGlobbing({ extensions: ['.scss', '.css'] }))
       .pipe(plugins.sass({ outputStyle: 'expanded', includePaths: ['bower_components', 'node_modules'] }))
-      .pipe(plugins.postcss(postcssPlugins))
+      .pipe(plugins.postcss(postcssPlugins));
+
+    // Save standard file
+    stream = helpers.destToTargets(stream, path.basename(__filename, '.js'), '/styles', plugins.browserSync.reload);
+
+    stream
       .pipe(plugins.rename({ suffix: '.min' }))
       .pipe(plugins.minifyCss({ keepSpecialComments: 1 }));
 
+    // Save minified file
     stream = helpers.destToTargets(stream, path.basename(__filename, '.js'), '/styles', plugins.browserSync.reload);
+
+    // Reload BrowserSync
     stream.pipe(plugins.browserSync.stream());
 
     return stream;
