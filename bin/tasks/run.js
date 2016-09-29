@@ -3,12 +3,7 @@
 module.exports = function (gulp, plugins, config) {
   plugins.browserSync.init(Object.assign({ notify: false }, config.proxy ? {
     proxy: {
-      target: config.proxy,
-      proxyReq: [
-        function (proxyReq) {
-          proxyReq.setHeader('proxy', 'browser-sync');
-        }
-      ]
+      target: config.proxy
     }
   } : { server: './' }));
 

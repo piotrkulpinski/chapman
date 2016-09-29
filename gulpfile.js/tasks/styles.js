@@ -9,7 +9,7 @@ module.exports = function (gulp, plugins, config, helpers) {
     var postcssPlugins = [
       require('postcss-import')(),
       require('autoprefixer')({
-        browsers: ['last 2 versions', 'IE 10', 'IE 11']
+        browsers: ['defaults', 'Android 4.3']
       })
     ];
 
