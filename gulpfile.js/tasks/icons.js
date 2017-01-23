@@ -1,9 +1,9 @@
-'use strict';
+import path from 'path'
 
-module.exports = function (gulp, plugins, config, helpers) {
-  gulp.task('icons', function () {
-    var src = config.source + '/assets/icons/*.svg';
-    var dest = config.source + '/assets/fonts';
+module.exports = (gulp, plugins, config, helpers) => {
+  gulp.task('icons', () => {
+    var src = config.source + '/assets/icons/*.svg'
+    var dest = config.source + '/assets/fonts'
 
     var stream = gulp.src(src)
       .pipe(plugins.plumber(helpers.onError))
@@ -14,16 +14,16 @@ module.exports = function (gulp, plugins, config, helpers) {
         normalize: true,
         appendCodepoints: false
       }))
-      .on('glyphs', function (glyphs, options) {
-        options.glyphs = glyphs;
+      .on('glyphs', (glyphs, options) => {
+        options.glyphs = glyphs
 
-        gulp.src(__dirname + '/../_icons.scss')
+        gulp.src(path.join(__dirname, '/../_icons.scss'))
           .pipe(plugins.consolidate('lodash', options))
-          .pipe(gulp.dest(config.source + '/styles/common'));
+          .pipe(gulp.dest(config.source + '/styles/common'))
       })
       .pipe(gulp.dest(dest))
-      .on('end', plugins.browserSync.reload);
+      .on('end', plugins.browserSync.reload)
 
-    return stream;
-  });
-};
+    return stream
+  })
+}

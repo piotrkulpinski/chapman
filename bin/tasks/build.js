@@ -1,9 +1,7 @@
-'use strict';
-
-module.exports = function (gulp, plugins, config) {
-  config.targets.forEach(function (target) {
-    plugins.del([target.path]).then(function () {
-      gulp.start(target.tasks);
-    });
-  });
-};
+module.exports = (gulp, plugins, config) => {
+  config.targets.forEach((target) => {
+    plugins.del([target.path]).then(() => {
+      gulp.start(target.tasks)
+    })
+  })
+}

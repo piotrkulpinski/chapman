@@ -1,26 +1,26 @@
-'use strict';
+'use strict'
 
-module.exports = function (gulp, config) {
+module.exports = (gulp, config) => {
   return {
-    onError: function (error) {
-      console.error(error.message + '\n');
-      console.error(error.fileName + ':' + error.lineNumber + '\n');
+    onError: (error) => {
+      console.error(error.message + '\n')
+      console.error(error.fileName + ':' + error.lineNumber + '\n')
 
-      this.emit('end');
+      this.emit('end')
     },
 
-    destToTargets: function (stream, task, directory, callback) {
-      config.targets.forEach(function (target) {
+    destToTargets: (stream, task, directory, callback) => {
+      config.targets.forEach((target) => {
         if (target.tasks.indexOf(task) >= 0) {
-          stream = stream.pipe(gulp.dest(target.path + (directory ? directory : '')));
+          stream = stream.pipe(gulp.dest(target.path + (directory || '')))
         }
-      });
+      })
 
       if (callback) {
-        stream.on('end', callback);
+        stream.on('end', callback)
       }
 
-      return stream;
+      return stream
     }
   }
-};
+}

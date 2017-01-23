@@ -1,5 +1,6 @@
 {
   "source": "src",
+  "es": "6",
   "targets": [
     {
       "path": "dist",
