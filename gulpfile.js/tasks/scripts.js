@@ -4,10 +4,11 @@ var path = require('path');
 
 module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('scripts', function () {
-    var src = config.source + '/scripts/**/*.js';
+    var src = config.source + '/scripts/main.js';
 
-    var stream = gulp.src(config.source + '/scripts/main.js')
+    var stream = gulp.src(src)
       .pipe(plugins.plumber(helpers.onError))
+      .pipe(plugins.babel({ presets: require('babel-preset-es2015') }))
       .pipe(plugins.browserify());
 
     // Save standard file
@@ -20,10 +21,6 @@ module.exports = function (gulp, plugins, config, helpers) {
     // Save minified file
     stream = helpers.destToTargets(stream, path.basename(__filename, '.js'), '/scripts', function () {
       plugins.browserSync.reload();
-
-      gulp.src(src)
-        .pipe(plugins.jshint('.jshintrc'))
-        .pipe(plugins.jshint.reporter('default'));
     });
 
     return stream;
