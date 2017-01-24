@@ -2,17 +2,12 @@
 ** Utils - Helpers
 ** -----------------------------------------------------------------------------*/
 
-.hide {
-  position: absolute !important;
-  left: -9999em !important;
-}
-
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.1em;
+  height: 0.1em;
   padding: 0;
-  margin: -1px;
+  margin: -0.1em;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;

@@ -70,7 +70,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -121,16 +121,11 @@ linters:
 
   PropertyUnits:
     enabled: true
-    global: [
-      'ch', 'em', 'ex', 'rem',
-      'cm', 'in', 'mm', 'pc', 'pt', 'px', 'q',
-      'vh', 'vw', 'vmin', 'vmax',
-      'deg', 'grad', 'rad', 'turn',
-      'ms', 's',
-      'Hz', 'kHz',
-      'dpi', 'dpcm', 'dppx',
-      '%']
+    global: ['em', 'rem', '%', 'vh', 'vw']
     properties:
+      border: ['px']
+      border-radius: ['px', '%']
+      margin: ['em', 'rem']
       line-height: []
 
   PseudoElement:
@@ -147,8 +142,8 @@ linters:
     max_depth: 3
 
   SelectorFormat:
-    enabled: false
-    convention: hyphenated_BEM
+    enabled: true
+    convention: strict_BEM
 
   Shorthand:
     enabled: true
@@ -159,7 +154,7 @@ linters:
     allow_single_line_rule_sets: true
 
   SingleLinePerSelector:
-    enabled: true
+    enabled: false
 
   SpaceAfterComma:
     enabled: true

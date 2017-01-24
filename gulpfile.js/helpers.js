@@ -2,7 +2,7 @@
 
 module.exports = (gulp, config) => {
   return {
-    onError: (error) => {
+    onError: function (error) {
       console.error(error.message + '\n')
       console.error(error.fileName + ':' + error.lineNumber + '\n')
 
