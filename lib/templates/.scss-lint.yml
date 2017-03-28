@@ -121,10 +121,10 @@ linters:
 
   PropertyUnits:
     enabled: true
-    global: ['em', 'rem', '%', 'vh', 'vw']
+    global: ['px', 'em', 'rem', '%', 'vh', 'vw', 's']
     properties:
       border: ['px']
-      border-radius: ['px', '%']
+      border-radius: ['px', '%', 'em']
       margin: ['em', 'rem']
       line-height: []
 

@@ -25,18 +25,16 @@
             <h2 class="heading">Template files:</h2>
 
             <ul class="file-list">
-              <%% for (var i = 0; i < pages.length; i++) { %>
-                <li class="file-list-element" id="template">
-                  <div class="file-list-title">
-                    <i class="fa fa-file-text-o"></i>
-                    <a href="dist/<%%= pages[i]['slug'] %>.html"><%%= pages[i]['name'] %></a>
-                  </div>
+              <li class="file-list-element" id="template">
+                <div class="file-list-title">
+                  <i class="fa fa-file-text-o"></i>
+                  <a href="dist/page.html">Page</a>
+                </div>
 
-                  <div class="file-types">
-                    <p><%%= pages[i]['slug'] %>.html</p>
-                  </div>
-                </li>
-              <%% } %>
+                <div class="file-types">
+                  <p>page.html</p>
+                </div>
+              </li>
             </ul>
           </section>
           <!-- / inner-content -->

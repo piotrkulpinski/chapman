@@ -1,36 +1,43 @@
-import path from 'path'
-import fs from 'fs'
-import gulp from 'gulp'
-import gulpPlugins from 'gulp-load-plugins'
+import path from 'path';
+import fse from 'fs-extra';
+import cli from 'commander';
 
-var command = process.argv[2]
-var destination = process.argv[3]
-var plugins = gulpPlugins({ pattern: ['*'] })
+import * as tasks from './tasks';
 
-const paths = {
-  remote: path.join(__dirname, '/'),
-  local: path.join(process.cwd(), '/')
+function runTask(task) {
+  fse.readJson(path.join(path.join(process.cwd(), '/'), 'handyman.json'), (error, config) => {
+    if (error) {
+      console.log('File: handyman.json not found in the project directory!');
+    }
+
+    if (config) {
+      tasks[task](config);
+    }
+  });
 }
 
-try {
-  var handymanTask = require(path.join(paths.remote, 'tasks', command))
-} catch (error) {
-  console.error('Incorrect Handyman command!')
-  console.error(error)
-}
+cli
+  .version('1.1.0');
 
-if (['build', 'run'].indexOf(command) > -1) {
-  let config = require(path.join(paths.local, 'handyman.json'))
-  let helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config)
-  let tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'))
+cli
+  .command('new <name>')
+  .description('create new project')
+  .action(name => tasks.new(name));
 
-  tasks.forEach((file) => {
-    require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers)
-  })
+cli
+  .command('build')
+  .description('build project source files')
+  .action(() => runTask('build'));
 
-  handymanTask(gulp, plugins, config)
-}
+cli
+  .command('run')
+  .description('run local server and watch files')
+  .action(() => runTask('run'));
 
-if (command === 'new') {
-  handymanTask(destination, paths)
-}
+cli
+  .command('*')
+  .action(() => {
+    console.log('Incorrect Handyman command!');
+  });
+
+cli.parse(process.argv);

@@ -3,6 +3,17 @@
 ** -----------------------------------------------------------------------------*/
 
 /*
+** Cover
+**/
+@mixin cover($offset: 0) {
+  position: absolute;
+  top: $offset;
+  bottom: $offset;
+  left: $offset;
+  right: $offset;
+}
+
+/*
 ** Clearfix
 **/
 @mixin clearfix {

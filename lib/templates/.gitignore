@@ -14,9 +14,62 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 
+# WordPress
+wp-config.php
+wp-config-local.php
+wp-content/uploads
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/cache/supercache/*
+wp-content/backups/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+#wp-content/themes/*/static
+wp-content/themes/*/vendor
+wp-content/themes/*/composer.lock
+sitemap.xml
+sitemap.xml.gz
+
 # Project specific
 node_modules
 npm-debug.log
-src/**/iconfont.*
-src/**/_icons.*
-dist
+**/src/**/iconfont.*
+**/src/**/_icons.*
+**/dist
+
+# Large/disallowed file types
+# A CDN should be used for these
+*.hqx
+*.bin
+*.exe
+*.dll
+*.deb
+*.dmg
+*.iso
+*.img
+*.msi
+*.msp
+*.msm
+*.mid
+*.midi
+*.kar
+*.mp3
+*.ogg
+*.m4a
+*.ra
+*.3gpp
+*.3gp
+*.mp4
+*.mpeg
+*.mpg
+*.mov
+*.webm
+*.flv
+*.m4v
+*.mng
+*.asx
+*.asf
+*.wmv
+*.avi
