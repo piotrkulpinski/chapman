@@ -3,7 +3,7 @@ module.exports = (gulp, plugins, config) => {
     proxy: {
       target: config.proxy
     }
-  } : { server: './' }))
+  } : { server: config.server || './' }))
 
   gulp.watch(config.source + '/assets/icons/*.svg', ['icons'])
   gulp.watch(config.source + '/styles/**/*', ['styles'])
