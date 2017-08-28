@@ -13,14 +13,14 @@ const paths = {
 }
 
 try {
-  var handymanTask = require(path.join(paths.remote, 'tasks', command))
+  var hawkerTask = require(path.join(paths.remote, 'tasks', command))
 } catch (error) {
-  console.error('Incorrect Handyman command!')
+  console.error('Incorrect Hawker command!')
   console.error(error)
 }
 
 if (['build', 'run'].indexOf(command) > -1) {
-  let config = require(path.join(paths.local, 'handyman.json'))
+  let config = require(path.join(paths.local, 'hawker.json'))
   let helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config)
   let tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'))
 
@@ -28,9 +28,9 @@ if (['build', 'run'].indexOf(command) > -1) {
     require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers)
   })
 
-  handymanTask(gulp, plugins, config)
+  hawkerTask(gulp, plugins, config)
 }
 
 if (command === 'new') {
-  handymanTask(destination, paths)
+  hawkerTask(destination, paths)
 }

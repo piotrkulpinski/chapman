@@ -21,7 +21,7 @@ module.exports = (gulp, plugins, config, helpers) => {
     stream = helpers.destToTargets(stream, path.basename(__filename, '.js'), '/styles')
 
     stream
-      .pipe(plugins.rename({ suffix: '.min' }))
+      .pipe(plugins.rename({ suffix: '-min' }))
       .pipe(plugins.minifyCss({ keepSpecialComments: 1 }))
 
     // Save minified file

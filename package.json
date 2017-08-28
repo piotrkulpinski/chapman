@@ -1,5 +1,5 @@
 {
-  "name": "handyman",
+  "name": "hawker",
   "version": "1.0.1",
   "description": "Static website generator with an easy-to-use framework",
   "keywords": [
@@ -10,47 +10,49 @@
     "scss",
     "postcss",
     "modernizr",
-    "gulp"
+    "gulp",
+    "hawker"
   ],
   "license": "MIT",
   "preferGlobal": true,
-  "repository": "piotrkulpinski/handyman",
+  "repository": "piotrkulpinski/hawker",
   "author": {
     "name": "Piotr Kulpinski",
     "email": "piotr@kulpinski.pl",
-    "url": "http://kulpinski.pl"
+    "url": "https://kulpinski.co"
   },
   "bin": {
-    "handyman": "./bin/handyman.js"
+    "hawker": "./bin/hawker.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "autoprefixer": "^6.5.0",
-    "babel-core": "^6.22.1",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-register": "^6.22.0",
+    "autoprefixer": "^7.1.3",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
     "babelify": "^7.3.0",
-    "browser-sync": "^2.16.0",
-    "del": "^2.2.2",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-consolidate": "^0.2.0",
-    "gulp-css-globbing": "^0.1.8",
-    "gulp-iconfont": "^8.0.1",
-    "gulp-load-plugins": "^1.3.0",
+    "gulp-css-globbing": "^0.2.2",
+    "gulp-iconfont": "^9.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-minify": "^1.0.0",
     "gulp-minify-css": "^1.2.4",
-    "gulp-newer": "^1.2.0",
+    "gulp-newer": "^1.3.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^7.0.0",
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2",
-    "gulp-twig": "^0.5.0",
-    "gulp-uglify": "^2.0.0",
-    "lodash": "^4.16.2",
-    "postcss-import": "^8.1.2"
+    "gulp-sass": "^3.1.0",
+    "gulp-svg-sprite": "^1.3.7",
+    "gulp-twig": "^0.7.0",
+    "lodash": "^4.17.4",
+    "postcss-import": "^10.0.0"
   },
   "devDependencies": {
     "ncp": "^2.0.0"
