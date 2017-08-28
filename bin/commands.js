@@ -20,15 +20,20 @@ try {
 }
 
 if (['build', 'run'].indexOf(command) > -1) {
-  let config = require(path.join(paths.local, 'hawker.json'))
-  let helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config)
-  let tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'))
+  try {
+    let config = require(path.join(paths.local, 'hawker.json'))
+    let helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config)
+    let tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'))
 
-  tasks.forEach((file) => {
-    require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers)
-  })
+    tasks.forEach((file) => {
+      require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers)
+    })
 
-  hawkerTask(gulp, plugins, config)
+    hawkerTask(gulp, plugins, config)
+  } catch (error) {
+    console.error('Config file not found!')
+    console.error(error)
+  }
 }
 
 if (command === 'new') {
