@@ -54,7 +54,7 @@ chapman run
 chapman build
 ```
 
-## Structure
+## File structure
 
 During project creation, Chapman will create below structure of files in project directory.
 
@@ -75,7 +75,8 @@ During project creation, Chapman will create below structure of files in project
 ├── .scss-lint.yml
 ├── chapman.json
 ├── index.html
-└── package.json
+├── package.json
+└── README.md
 ```
 
 I bet you already know what all the files in root directory do (yeah, just pre-configured files for linting, syntax formatting, etc.), so in the next section we'll focus on the contents of *src* directory.
