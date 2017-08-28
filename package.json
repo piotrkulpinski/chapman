@@ -1,5 +1,5 @@
 {
-  "name": "hawker",
+  "name": "chapman",
   "version": "1.1.0",
   "description": "Static website generator with an easy-to-use framework",
   "keywords": [
@@ -11,18 +11,18 @@
     "postcss",
     "modernizr",
     "gulp",
-    "hawker"
+    "chapman"
   ],
   "license": "MIT",
   "preferGlobal": true,
-  "repository": "piotrkulpinski/hawker",
+  "repository": "piotrkulpinski/chapman",
   "author": {
     "name": "Piotr Kulpinski",
     "email": "piotr@kulpinski.pl",
     "url": "https://kulpinski.co"
   },
   "bin": {
-    "hawker": "./bin/hawker.js"
+    "chapman": "./bin/chapman.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

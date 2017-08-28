@@ -12,7 +12,7 @@ module.exports = (destination, paths) => {
     console.log('Now run below commands and start working. Happy coding!')
     console.log('cd ' + destination)
     console.log('npm install')
-    console.log('hawker build')
-    console.log('hawker run')
+    console.log('chapman build')
+    console.log('chapman run')
   })
 }

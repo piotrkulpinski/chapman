@@ -1,12 +1,12 @@
-# Hawker [![NPM version](https://badge.fury.io/js/hawker.svg)](http://badge.fury.io/js/hawker) [![NPM dependiencies](https://david-dm.org/piotrkulpinski/hawker.svg)](https://david-dm.org/piotrkulpinski/hawker)
+# Chapman [![NPM version](https://badge.fury.io/js/chapman.svg)](http://badge.fury.io/js/chapman) [![NPM dependiencies](https://david-dm.org/piotrkulpinski/chapman.svg)](https://david-dm.org/piotrkulpinski/chapman)
 
-Hawker is static site generator. It consists of very opinionated Gulp workflow (with support of modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers) and basic directories & files structure that is generated during each project initialization.
+Chapman is static site generator. It consists of very opinionated Gulp workflow (with support of modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers) and basic directories & files structure that is generated during each project initialization.
 
-I bet above description haven't been very helpful in understanding what Hawker actually does, so let's see how to use it.
+I bet above description haven't been very helpful in understanding what Chapman actually does, so let's see how to use it.
 
 ## Requirements
 
-The following software needs to be installed before using Hawker. These installations need to be done just once so you can skip this section if you have the software already installed.
+The following software needs to be installed before using Chapman. These installations need to be done just once so you can skip this section if you have the software already installed.
 
 First is Node.js, so you can work with `npm`, Node package manager. You can install it from [pre-built installer](http://nodejs.org) or using Homebrew:
 
@@ -25,38 +25,38 @@ npm install -g gulp
 First step is to install the package globally.
 
 ```bash
-npm install -g hawker
+npm install -g chapman
 ```
 
 Now that you have it installed, you can initialize new project.
 
 ```bash
-hawker new project-name
+chapman new project-name
 cd project-name
 npm install
 
-hawker build
-hawker run
+chapman build
+chapman run
 ```
 
-Above commands will create *project-name* directory and copy project files there. Next, `cd` to this newly created directory and run `npm install` to install all dependencies, and start up the Gulp workflow using `hawker build` and `hawker run`. And yeah, that's it — you're ready to rock! :metal:
+Above commands will create *project-name* directory and copy project files there. Next, `cd` to this newly created directory and run `npm install` to install all dependencies, and start up the Gulp workflow using `chapman build` and `chapman run`. And yeah, that's it — you're ready to rock! :metal:
 
 For reference, below is list of all commands that you can choose from.
 
 ```bash
 # Generate new project.
-hawker new <project-name>
+chapman new <project-name>
 
 # This task will start the browser-sync server, watch for changes in files and recompile them as needed.
-hawker run
+chapman run
 
 # Recreate whole project.
-hawker build
+chapman build
 ```
 
 ## Structure
 
-During project creation, Hawker will create below structure of files in project directory.
+During project creation, Chapman will create below structure of files in project directory.
 
 ```bash
 .
@@ -73,7 +73,7 @@ During project creation, Hawker will create below structure of files in project 
 ├── .gitignore
 ├── .jshintrc
 ├── .scss-lint.yml
-├── hawker.json
+├── chapman.json
 ├── index.html
 └── package.json
 ```
@@ -82,15 +82,15 @@ I bet you already know what all the files in root directory do (yeah, just pre-c
 
 ## Tasks
 
-Hawker *src* folder consists of four main directories (these have their equivalents as Gulp tasks.) Let's find out what kind of stuff can be put to each of them and what will happen if you do this.
+Chapman *src* folder consists of four main directories (these have their equivalents as Gulp tasks.) Let's find out what kind of stuff can be put to each of them and what will happen if you do this.
 
 ### templates
 
-HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Thanks to Twig, templates can be divided into partials and later included in main HTML files. Partials (files with *_* prefix in their name) will not be copied to compiled target. Hawker uses [Twig.js](https://github.com/justjohn/twig.js) which means you can use basically all the functionalities from its original PHP implementation. At the end, files are prettified with JS Prettify library to ensure consistency in the output.
+HTML files compiled using [Twig](http://twig.sensiolabs.org) template engine. Thanks to Twig, templates can be divided into partials and later included in main HTML files. Partials (files with *_* prefix in their name) will not be copied to compiled target. Chapman uses [Twig.js](https://github.com/justjohn/twig.js) which means you can use basically all the functionalities from its original PHP implementation. At the end, files are prettified with JS Prettify library to ensure consistency in the output.
 
 ### scripts
 
-Directory with JavaScript files. Hawker has Browserify support built in, so you can use it out of the box. You can also write JS code using ECMAScript 6 as it's also supported by default.
+Directory with JavaScript files. Chapman has Browserify support built in, so you can use it out of the box. You can also write JS code using ECMAScript 6 as it's also supported by default.
 
 ### styles
 
@@ -126,10 +126,10 @@ This will allow Hacker to generate iconfont.woff and iconfont.woff2 files in you
 
 ## Configuration
 
-*hawker.json* file, created in your project directory is pre-configured but you can always modify it to change behavior of Hawker.
+*chapman.json* file, created in your project directory is pre-configured but you can always modify it to change behavior of Chapman.
 
 ```javascript
-// hawker.json
+// chapman.json
 {
   // Directory where all source files are stored.
   "source": "src",
@@ -140,7 +140,7 @@ This will allow Hacker to generate iconfont.woff and iconfont.woff2 files in you
   // Choose whether you want to generate SVG icon sprite or not
   "svgIcons": true,
   
-  // List of all targets where Hawker will compile source files.
+  // List of all targets where Chapman will compile source files.
   // You can also specify which tasks will be invoked for each target.
   "targets": [
     {
@@ -166,4 +166,4 @@ Array of directories to which source will be compiled. `path` points to target d
 
 ## License
 
-Hawker is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Chapman is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

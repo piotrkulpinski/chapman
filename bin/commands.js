@@ -13,15 +13,15 @@ const paths = {
 }
 
 try {
-  var hawkerTask = require(path.join(paths.remote, 'tasks', command))
+  var chapmanTask = require(path.join(paths.remote, 'tasks', command))
 } catch (error) {
-  console.error('Incorrect Hawker command!')
+  console.error('Incorrect Chapman command!')
   console.error(error)
 }
 
 if (['build', 'run'].indexOf(command) > -1) {
   try {
-    let config = require(path.join(paths.local, 'hawker.json'))
+    let config = require(path.join(paths.local, 'chapman.json'))
     let helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config)
     let tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'))
 
@@ -29,7 +29,7 @@ if (['build', 'run'].indexOf(command) > -1) {
       require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers)
     })
 
-    hawkerTask(gulp, plugins, config)
+    chapmanTask(gulp, plugins, config)
   } catch (error) {
     console.error('Config file not found!')
     console.error(error)
@@ -37,5 +37,5 @@ if (['build', 'run'].indexOf(command) > -1) {
 }
 
 if (command === 'new') {
-  hawkerTask(destination, paths)
+  chapmanTask(destination, paths)
 }
