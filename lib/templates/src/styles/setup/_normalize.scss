@@ -3,29 +3,29 @@
 ** -----------------------------------------------------------------------------*/
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
   font-family: inherit;
   font-size: inherit;
   font-style: inherit;
   font-weight: inherit;
   line-height: inherit;
-  color: inherit;
-  background-color: transparent;
-  border: 0;
 }
 
 :root {
   height: 100%;
-  overflow-y: scroll;
   font-size: 62.5%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-y: scroll;
   text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   word-wrap: break-word;
   box-sizing: border-box;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 *,
@@ -37,16 +37,17 @@
 a,
 button,
 [type="button"] {
+  cursor: pointer;
   color: currentColor;
   text-decoration: none;
-  cursor: pointer;
 
   &:focus {
     outline: none;
   }
 }
 
-img {
+img,
+iframe {
   display: block;
   max-width: 100%;
 }

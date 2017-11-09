@@ -7,9 +7,11 @@
 @import 'setup/variables';
 
 // Vendor dependencies
-@import 'flexgridy/styles/flexgridy';
+@import 'bespoke-toolkit/styles/toolkit';
 
 @import 'setup/mixins';
+@import 'setup/animations';
+@import 'setup/placeholders';
 @import 'setup/normalize';
 
 @import 'common/*';

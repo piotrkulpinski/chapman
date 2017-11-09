@@ -4,23 +4,26 @@
 
 // Color definitions
 $color-black:           #000000 !default;
-$color-white:           #ffffff !default;
+$color-white:           #FFFFFF !default;
 
-// Z-indexes
-$zindex-negative:       -1 !default;
-$zindex-neutral:        0 !default;
-$zindex-base:           1 !default;
+// Z-index Layers
+$layer-negative:        -1 !default;
+$layer-neutral:         0 !default;
+$layer-base:            1 !default;
 
 // Font definitions
 $font-arial:            'Arial', 'Helvetica Neue', Helvetica, sans-serif !default;
 
 $font-color:            $color-black !default;
 $font-family:           $font-arial !default;
-$font-size:             1.4em !default;
-$font-line-height:      1.2 !default;
+$font-size:             1.8em !default;
+$font-line-height:      1.6 !default;
 
 // Base path for assets
 $base-path:             '..' !default;
+
+// Transitions
+$transition-duration:   0.25s !default;
 
 // Grid definitions
 $breakpoints: (

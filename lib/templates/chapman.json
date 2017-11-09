@@ -1,6 +1,7 @@
 {
   "source": "src",
   "es": "6",
+  "svgIcons": "sprite",
   "targets": [
     {
       "path": "dist",

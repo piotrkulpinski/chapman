@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('scripts', function () {
-    var src = config.source + '/scripts/main.js';
+    var src = config.source + '/scripts/*.js';
 
     var browserifyOptions = config.es === '6' ? {
       transform: plugins.babelify.configure({

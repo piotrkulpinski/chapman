@@ -127,6 +127,8 @@ linters:
       border-radius: ['px', '%']
       margin: ['em', 'rem']
       line-height: []
+      transition: [s]
+      transition-duration: [s]
 
   PseudoElement:
     enabled: true
