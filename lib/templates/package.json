@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "bespoke-toolkit": "^0.3.2"
+    "bespoke-toolkit": "^0.3.3",
+    "svg4everybody": "^2.1.9"
   }
 }
