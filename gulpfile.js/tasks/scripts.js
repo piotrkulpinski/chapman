@@ -3,12 +3,17 @@ var path = require('path');
 module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('scripts', function () {
     var src = config.source + '/scripts/*.js';
-
-    var browserifyOptions = config.es === '6' ? {
-      transform: plugins.babelify.configure({
+    var browserifyOptions = { transform: [] };
+    
+    if (config.es === '6') {
+      browserifyOptions.transform.push(plugins.babelify.configure({
         presets: [plugins.babelPresetEs2015],
-      })
-    } : {};
+      }));
+    }
+    
+    if (config.vue) {
+      browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
+    }
 
     var stream = gulp.src(src)
       .pipe(plugins.plumber(helpers.onError))
