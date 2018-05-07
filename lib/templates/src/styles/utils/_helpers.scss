@@ -2,7 +2,7 @@
 ** Utils - Helpers
 ** -----------------------------------------------------------------------------*/
 
-.sr-only {
+.u-sr-only {
   position: absolute;
   width: 0.1em;
   height: 0.1em;
@@ -23,18 +23,14 @@
   }
 }
 
-.clearfix {
-  @include clearfix;
-}
-
-.text-center {
+.u-text-center {
   text-align: center;
 }
 
-.text-left {
+.u-text-left {
   text-align: left;
 }
 
-.text-right {
+.u-text-right {
   text-align: right;
 }
