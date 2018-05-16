@@ -1,8 +1,14 @@
 var path = require('path');
+var chalk = require('chalk');
 
 module.exports = function (gulp, plugins, config, helpers) {
-  gulp.task('assets', function () {
+  return function () {
     var src = [config.source + '/assets/**/*', '!**/.keep'];
-    return helpers.destToTargets(gulp.src(src), path.basename(__filename, '.js'), null, plugins.browserSync.reload);
-  });
+
+    var stream = gulp.src(src);
+
+    console.log(chalk.green('Icons built successfully.'));
+
+    return helpers.destToTargets(stream, path.basename(__filename, '.js'), null, plugins.browserSync.reload);
+  };
 }

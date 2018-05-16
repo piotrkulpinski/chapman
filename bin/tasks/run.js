@@ -5,9 +5,9 @@ module.exports = function (gulp, plugins, config) {
     }
   } : { server: config.server || './' }));
 
-  gulp.watch(config.source + '/assets/icons/*.svg', ['icons']);
-  gulp.watch(config.source + '/styles/**/*', ['styles']);
-  gulp.watch(config.source + '/scripts/**/*', ['scripts']);
-  gulp.watch(config.source + '/assets/**/*', ['assets']);
-  gulp.watch(config.source + '/templates/**/*.{twig,html}', ['templates']);
+  gulp.watch(config.source + '/assets/icons/*.svg', gulp.series('icons'));
+  gulp.watch(config.source + '/styles/**/*', gulp.series('styles'));
+  gulp.watch(config.source + '/scripts/**/*', gulp.series('scripts'));
+  gulp.watch(config.source + '/assets/**/*', gulp.series('assets'));
+  gulp.watch(config.source + '/templates/**/*.{twig,html}', gulp.series('templates'));
 }

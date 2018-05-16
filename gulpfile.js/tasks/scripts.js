@@ -1,7 +1,8 @@
 var path = require('path');
+var chalk = require('chalk');
 
 module.exports = function (gulp, plugins, config, helpers) {
-  gulp.task('scripts', function () {
+  return function () {
     var src = config.source + '/scripts/*.js';
     var browserifyOptions = { transform: [] };
 
@@ -25,6 +26,8 @@ module.exports = function (gulp, plugins, config, helpers) {
       plugins.browserSync.reload();
     });
 
+    console.log(chalk.green('Scripts built successfully.'));
+
     return stream;
-  });
+  };
 }

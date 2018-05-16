@@ -25,13 +25,14 @@ if (['build', 'run'].indexOf(command) > -1) {
   try {
     var config = require(path.join(paths.local, 'chapman.json'));
     var helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config);
-    var tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'));
+    var taskFiles = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'));
+    var tasks = [];
 
-    tasks.forEach(function(file) {
-      require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers);
+    taskFiles.forEach(function (file) {
+      tasks.push(require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers));
     });
 
-    chapmanTask(gulp, plugins, config);
+    chapmanTask(gulp, plugins, config, tasks);
   } catch (error) {
     console.error('Config file not found!');
     console.error(error);

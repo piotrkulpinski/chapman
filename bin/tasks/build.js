@@ -1,7 +1,7 @@
-module.exports = function (gulp, plugins, config) {
+module.exports = function (gulp, plugins, config, tasks) {
   config.targets.forEach(function (target) {
     plugins.del([target.path]).then(function () {
-      gulp.start(target.tasks);
+      gulp.task('build', gulp.series(...tasks));
     });
   });
 }

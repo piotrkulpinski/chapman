@@ -1,9 +1,10 @@
 var path = require('path');
+var chalk = require('chalk');
 
 module.exports = function (gulp, plugins, config, helpers) {
-  gulp.task('icons', function () {
+  return function () {
     var src = config.source + '/assets/icons/*.svg';
-    
+
     if (config.svgIcons === 'sprite') {
       var dest = config.source + '/assets/images';
 
@@ -22,9 +23,11 @@ module.exports = function (gulp, plugins, config, helpers) {
             }
           }
         }));
-        
+
+      console.log(chalk.green('Icons built successfully.'));
+
       return helpers.destToTargets(stream, path.basename(__filename, '.js'), null, plugins.browserSync.reload);
-      
+
     }
     else {
       var dest = config.source + '/assets/fonts';
@@ -48,7 +51,9 @@ module.exports = function (gulp, plugins, config, helpers) {
         .pipe(gulp.dest(dest))
         .on('end', plugins.browserSync.reload);
 
+      console.log(chalk.green('Icons built successfully.'));
+
       return stream;
     }
-  });
+  };
 }
