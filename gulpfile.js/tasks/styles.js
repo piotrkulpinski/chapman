@@ -14,6 +14,7 @@ module.exports = function (gulp, plugins, config, helpers) {
     var stream = gulp.src(src)
       .pipe(plugins.plumber(helpers.onError))
       .pipe(plugins.cssGlobbing({ extensions: ['.scss', '.css'] }))
+      // .pipe(plugins.stylelint())
       .pipe(plugins.sass({ outputStyle: 'expanded', includePaths: ['bower_components', 'node_modules'] }))
       .pipe(plugins.postcss(postcssPlugins));
 
@@ -22,7 +23,7 @@ module.exports = function (gulp, plugins, config, helpers) {
 
     stream
       .pipe(plugins.rename({ suffix: '-min' }))
-      .pipe(plugins.minifyCss({ keepSpecialComments: 1 }));
+      .pipe(plugins.cleanCss({ specialComments: 1 }));
 
     // Save minified file
     stream = helpers.destToTargets(stream, path.basename(__filename, '.js'), '/styles');

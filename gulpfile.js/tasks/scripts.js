@@ -4,13 +4,13 @@ module.exports = function (gulp, plugins, config, helpers) {
   gulp.task('scripts', function () {
     var src = config.source + '/scripts/*.js';
     var browserifyOptions = { transform: [] };
-    
+
     if (config.es === '6') {
       browserifyOptions.transform.push(plugins.babelify.configure({
-        presets: [plugins.babelPresetEs2015],
+        presets: [plugins.babelPresetEnv],
       }));
     }
-    
+
     if (config.vue) {
       browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
     }
