@@ -2,7 +2,7 @@ var path = require('path');
 var chalk = require('chalk');
 
 module.exports = function (gulp, plugins, config, helpers) {
-  return function () {
+  return () => {
     var src = config.source + '/scripts/*.js';
     var browserifyOptions = { transform: [] };
 

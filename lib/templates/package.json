@@ -1,4 +1,26 @@
 {
+  "name": "Project name",
+  "version": "1.0.0",
+  "author": "Author name",
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp",
+    "lint": "gulp lint-js && gulp lint-css",
+    "start": "gulp",
+    "watch": "gulp"
+  },
+  "chapman": {
+    "source": "src",
+    "target": "dist",
+    "es": "6",
+    "tasks": [
+      "assets",
+      "icons",
+      "scripts",
+      "styles",
+      "templates"
+    ]
+  },
   "dependencies": {
     "bespoke-toolkit": "^0.3.3",
     "svg4everybody": "^2.1.9"

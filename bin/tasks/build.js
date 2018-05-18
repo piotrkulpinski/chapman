@@ -1,7 +1,18 @@
-module.exports = function (gulp, plugins, config, tasks) {
-  config.targets.forEach(function (target) {
-    plugins.del([target.path]).then(function () {
-      gulp.task('build', gulp.series(...tasks));
-    });
-  });
+const ora = require('ora');
+
+module.exports = (gulp, plugins, config, tasks) => {
+  const spinner = ora('Building project...\n').start();
+
+  const clean = (callback) => {
+    console.log('Clean');
+    return del([config.target], callback);
+  }
+
+  // Add build task
+  gulp.task('build',
+    gulp.series(clean, gulp.parallel(...tasks), (done) => {
+      spinner.succeed('Project built successfully!');
+      done();
+    })
+  );
 }

@@ -1,17 +1,12 @@
 {
   "source": "src",
+  "target": "dist",
   "es": "6",
-  "svgIcons": "sprite",
-  "targets": [
-    {
-      "path": "dist",
-      "tasks": [
-        "assets",
-        "icons",
-        "scripts",
-        "styles",
-        "templates"
-      ]
-    }
+  "tasks": [
+    "assets",
+    "icons",
+    "scripts",
+    "styles",
+    "templates"
   ]
 }
