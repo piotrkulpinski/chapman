@@ -2,7 +2,7 @@ const path = require('path');
 const pump = require('pump');
 
 module.exports = (gulp, plugins, config, spinner) => {
-  gulp.task('styles', () => {
+  return (done) => {
     const src = `${config.src}/styles/*.scss`;
     const dest = `${config.dest}/styles`;
 
@@ -26,8 +26,9 @@ module.exports = (gulp, plugins, config, spinner) => {
       // Inject new styles
       plugins.browserSync.stream(),
     ], () => {
-      spinner.color = 'yellow';
       spinner.text = 'Building styles...\n';
+      
+      done();
     });
-  });
+  };
 }

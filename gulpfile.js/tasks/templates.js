@@ -2,7 +2,7 @@ const path = require('path');
 const pump = require('pump');
 
 module.exports = (gulp, plugins, config, spinner) => {
-  gulp.task('templates', () => {
+  return (done) => {
     const src = `${config.src}/templates/*.{twig,html}`;
     const dest = `${config.dest}`;
     
@@ -12,10 +12,10 @@ module.exports = (gulp, plugins, config, spinner) => {
       plugins.prettify({ indent_size: 2, preserve_newlines: true, extra_liners: [] }),
       gulp.dest(dest),
     ], () => {
-      spinner.color = 'yellow';
       spinner.text = 'Building templates...\n';
-      
       plugins.browserSync.reload();
+      
+      done();
     });
-  });
+  };
 }

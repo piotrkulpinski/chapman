@@ -13,10 +13,12 @@ module.exports = (destination, paths, spinner) => {
 
     spinner.succeed(chalk.green('Project initialized successfully!\n'));
 
-    console.log(chalk.gray(`Now run below commands and start working. Happy coding!`));
-    console.log(chalk.gray(`> cd ${destination}`));
-    console.log(chalk.gray(`> npm install`));
-    console.log(chalk.gray(`> chapman build`));
-    console.log(chalk.gray(`> chapman run`));
+    console.log(chalk.gray(
+      `Now run below commands and start working. Happy coding!\n`,
+      `> cd ${destination}\n`,
+      `> npm install\n`,
+      `> chapman build\n`,
+      `> chapman run\n`,
+    ));
   });
 }
