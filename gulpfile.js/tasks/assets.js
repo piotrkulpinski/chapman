@@ -1,7 +1,7 @@
 const path = require('path');
 const pump = require('pump');
 
-module.exports = (gulp, plugins, config, helpers) => {
+module.exports = (gulp, plugins, config, spinner) => {
   gulp.task('assets', () => {
     const src = `${config.src}/assets/**/*`;
     const dest = `${config.dest}`;
@@ -9,6 +9,11 @@ module.exports = (gulp, plugins, config, helpers) => {
     return pump([
       gulp.src(src),
       gulp.dest(dest),
-    ], () => plugins.browserSync.reload());
+    ], () => {
+      spinner.color = 'yellow';
+      spinner.text = 'Building assets...\n';
+      
+      plugins.browserSync.reload();
+    });
   });
 }

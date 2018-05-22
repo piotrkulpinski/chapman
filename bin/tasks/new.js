@@ -1,17 +1,17 @@
 const fse = require('fs-extra');
 const chalk = require('chalk');
-const ora = require('ora');
 
-module.exports = (destination, paths) => {
+module.exports = (destination, paths, spinner) => {
   const templates = `${paths.remote}../template`;
-  const spinner = ora('Copying files...\n').start();
+  
+  spinner.text = 'Copying files...\n';
 
   fse.copy(templates, destination, error => {
     if (error) {
-      return console.error(chalk.red(error));
+      return spinner.fail(chalk.red(`${error}\n`));
     }
 
-    spinner.succeed('Project initialized successfully!\n');
+    spinner.succeed(chalk.green('Project initialized successfully!\n'));
 
     console.log(chalk.gray(`Now run below commands and start working. Happy coding!`));
     console.log(chalk.gray(`> cd ${destination}`));

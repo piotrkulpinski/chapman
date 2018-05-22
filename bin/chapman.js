@@ -3,12 +3,15 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const ora = require('ora');
+
 const gulp = require('gulp');
 const gulpPlugins = require('gulp-load-plugins');
 
 const command = process.argv[2];
 const destination = process.argv[3];
 const plugins = gulpPlugins({ pattern: ['*'] });
+const spinner = ora('Starting chapman...\n').start();
 
 const paths = {
   remote: path.join(__dirname, '/'),
@@ -17,27 +20,27 @@ const paths = {
 
 if (['build', 'run', 'new'].includes(command)) {
   const chapmanTask = require(path.join(paths.remote, 'tasks', command));
+  const gulpTasks = path.join(paths.remote, '../gulpfile.js/tasks');
   
   if (['build', 'run'].includes(command)) {
     try {
       var config = require(path.join(paths.local, 'chapman.json'));
     } catch (error) {
-      return console.error(chalk.red('Error: Config file not found!'));
+      return spinner.fail(chalk.red('Error: Config file not found!'));
     }
     
-    const helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config);
-    const tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'));
-
-    tasks.forEach(function(file) {
-      require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers);
+    // Read Gulp tasks synchronously
+    fs.readdirSync(gulpTasks).forEach(file => {
+      const gulpTask = require(path.join(gulpTasks, file));
+      gulpTask(gulp, plugins, config, spinner);
     });
 
-    chapmanTask(gulp, plugins, config);
+    chapmanTask(gulp, plugins, config, spinner);
   }
 
   if (command === 'new') {
-    chapmanTask(destination, paths);
+    chapmanTask(destination, paths, spinner);
   }
 } else {
-  console.error(chalk.red(`Error: Incorrect command "${command}"!`));
+  return spinner.fail(chalk.red(`Error: Incorrect command "${command}"!`));
 }

@@ -1,7 +1,7 @@
 const path = require('path');
 const pump = require('pump');
 
-module.exports = (gulp, plugins, config, helpers) => {
+module.exports = (gulp, plugins, config, spinner) => {
   gulp.task('icons', () => {
     const src = `${config.src}/assets/icons/*.svg`;
     const dest = `${config.dest}`;
@@ -19,6 +19,11 @@ module.exports = (gulp, plugins, config, helpers) => {
         }
       }),
       gulp.dest(dest),
-    ], () => plugins.browserSync.reload());
+    ], () => {
+      spinner.color = 'yellow';
+      spinner.text = 'Building icons...\n';
+      
+      plugins.browserSync.reload();
+    });
   });
 }

@@ -1,7 +1,7 @@
 const path = require('path');
 const pump = require('pump');
 
-module.exports = (gulp, plugins, config, helpers) => {
+module.exports = (gulp, plugins, config, spinner) => {
   gulp.task('scripts', () => {
     const src = `${config.src}/scripts/*.js`;
     const dest = `${config.dest}/scripts`;
@@ -23,6 +23,11 @@ module.exports = (gulp, plugins, config, helpers) => {
       plugins.browserify(browserifyOptions),
       plugins.minify({ preserveComments: 'some' }),
       gulp.dest(dest),
-    ], () => plugins.browserSync.reload());
+    ], () => {
+      spinner.color = 'yellow';
+      spinner.text = 'Building scripts...\n';
+      
+      plugins.browserSync.reload();
+    });
   });
 }

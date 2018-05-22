@@ -1,4 +1,4 @@
-module.exports = (gulp, plugins, config) => {
+module.exports = (gulp, plugins, config, spinner) => {
   plugins.browserSync.init(Object.assign({ notify: false },
     config.proxy ?
       { proxy: { target: config.proxy } } :
