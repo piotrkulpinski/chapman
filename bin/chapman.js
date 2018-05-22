@@ -1,43 +1,43 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var fs = require('fs');
-var gulp = require('gulp');
-var gulpPlugins = require('gulp-load-plugins');
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
+const gulp = require('gulp');
+const gulpPlugins = require('gulp-load-plugins');
 
-var command = process.argv[2];
-var destination = process.argv[3];
-var plugins = gulpPlugins({ pattern: ['*'] });
+const command = process.argv[2];
+const destination = process.argv[3];
+const plugins = gulpPlugins({ pattern: ['*'] });
 
 const paths = {
   remote: path.join(__dirname, '/'),
   local: path.join(process.cwd(), '/')
 };
 
-try {
-  var chapmanTask = require(path.join(paths.remote, 'tasks', command));
-} catch (error) {
-  console.error('Incorrect Chapman command!');
-  console.error(error);
-}
-
-if (['build', 'run'].indexOf(command) > -1) {
-  try {
-    var config = require(path.join(paths.local, 'chapman.json'));
-    var helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config);
-    var tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'));
+if (['build', 'run', 'new'].includes(command)) {
+  const chapmanTask = require(path.join(paths.remote, 'tasks', command));
+  
+  if (['build', 'run'].includes(command)) {
+    try {
+      var config = require(path.join(paths.local, 'chapman.json'));
+    } catch (error) {
+      return console.error(chalk.red('Error: Config file not found!'));
+    }
+    
+    const helpers = require(path.join(paths.remote, '../gulpfile.js/helpers'))(gulp, config);
+    const tasks = fs.readdirSync(path.join(paths.remote, '../gulpfile.js/tasks'));
 
     tasks.forEach(function(file) {
       require(path.join(paths.remote, '../gulpfile.js/tasks', file))(gulp, plugins, config, helpers);
     });
 
     chapmanTask(gulp, plugins, config);
-  } catch (error) {
-    console.error('Config file not found!');
-    console.error(error);
   }
-}
 
-if (command === 'new') {
-  chapmanTask(destination, paths);
+  if (command === 'new') {
+    chapmanTask(destination, paths);
+  }
+} else {
+  console.error(chalk.red(`Error: Incorrect command "${command}"!`));
 }

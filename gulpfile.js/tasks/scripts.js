@@ -1,30 +1,28 @@
-var path = require('path');
+const path = require('path');
+const pump = require('pump');
 
-module.exports = function (gulp, plugins, config, helpers) {
-  gulp.task('scripts', function () {
-    var src = config.source + '/scripts/*.js';
-    var browserifyOptions = { transform: [] };
+module.exports = (gulp, plugins, config, helpers) => {
+  gulp.task('scripts', () => {
+    const src = `${config.src}/scripts/*.js`;
+    const dest = `${config.dest}/scripts`;
     
-    if (config.es === '6') {
-      browserifyOptions.transform.push(plugins.babelify.configure({
-        presets: [plugins.babelPresetEs2015],
-      }));
-    }
+    // var browserifyOptions = { transform: [] };
+    // 
+    // if (config.vue) {
+    //   browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
+    // }
     
-    if (config.vue) {
-      browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
-    }
+    const browserifyOptions = {
+      transform: plugins.babelify.configure({
+        presets: [plugins.babelPresetEnv],
+      })
+    };
 
-    var stream = gulp.src(src)
-      .pipe(plugins.plumber(helpers.onError))
-      .pipe(plugins.browserify(browserifyOptions))
-      .pipe(plugins.minify({ preserveComments: 'some' }));
-
-    // Save minified file
-    stream = helpers.destToTargets(stream, path.basename(__filename, '.js'), '/scripts', function () {
-      plugins.browserSync.reload();
-    });
-
-    return stream;
+    return pump([
+      gulp.src(src),
+      plugins.browserify(browserifyOptions),
+      plugins.minify({ preserveComments: 'some' }),
+      gulp.dest(dest),
+    ], () => plugins.browserSync.reload());
   });
 }

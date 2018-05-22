@@ -1,8 +1,14 @@
-var path = require('path');
+const path = require('path');
+const pump = require('pump');
 
-module.exports = function (gulp, plugins, config, helpers) {
-  gulp.task('assets', function () {
-    var src = [config.source + '/assets/**/*', '!**/.keep'];
-    return helpers.destToTargets(gulp.src(src), path.basename(__filename, '.js'), null, plugins.browserSync.reload);
+module.exports = (gulp, plugins, config, helpers) => {
+  gulp.task('assets', () => {
+    const src = `${config.src}/assets/**/*`;
+    const dest = `${config.dest}`;
+    
+    return pump([
+      gulp.src(src),
+      gulp.dest(dest),
+    ], () => plugins.browserSync.reload());
   });
 }
