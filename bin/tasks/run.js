@@ -8,7 +8,7 @@ module.exports = (gulp, plugins, config, spinner, tasks) => {
     scripts: `${config.src}/scripts/**/*`,
     templates: `${config.src}/templates/**/*.{twig,html}`,
   };
-  
+
   spinner.succeed();
 
   plugins.browserSync.init(Object.assign({ notify: false },

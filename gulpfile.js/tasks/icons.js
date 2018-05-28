@@ -5,7 +5,7 @@ module.exports = (gulp, plugins, config, spinner) => {
   return (done) => {
     const src = `${config.src}/assets/icons/*.svg`;
     const dest = `${config.dest}`;
-    
+
     return pump([
       gulp.src(src),
       plugins.svgSprite({
@@ -22,7 +22,7 @@ module.exports = (gulp, plugins, config, spinner) => {
     ], () => {
       spinner.text = 'Building icons...\n';
       plugins.browserSync.reload();
-      
+
       done();
     });
   };

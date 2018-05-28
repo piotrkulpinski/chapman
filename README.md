@@ -134,20 +134,20 @@ This will allow Hacker to generate iconfont.woff and iconfont.woff2 files in you
 {
   // Directory where all source files are stored.
   "source": "src",
-  
+
   // Version of the ECMAScript you'd want to use with your project
   "es": "6",
-  
+
   // Choose whether you want to generate SVG icon sprite or not
   "svgIcons": true,
-  
+
   // List of all targets where Chapman will compile source files.
   // You can also specify which tasks will be invoked for each target.
   "targets": [
     {
       // Target directory path
       "path": "dist",
-      
+
       // Target task list
       "tasks": [
         "assets",

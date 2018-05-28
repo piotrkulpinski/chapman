@@ -3,7 +3,7 @@ const chalk = require('chalk');
 
 module.exports = (destination, paths, spinner) => {
   const templates = `${paths.remote}../template`;
-  
+
   spinner.text = 'Copying files...\n';
 
   fse.copy(templates, destination, error => {

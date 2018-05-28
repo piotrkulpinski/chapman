@@ -22,18 +22,18 @@ if (['build', 'run', 'new'].includes(command)) {
   const chapmanTask = require(path.join(paths.remote, 'tasks', command));
   const gulpTasks = path.join(paths.remote, '../gulpfile.js/tasks');
   const tasks = [];
-  
+
   if (['build', 'run'].includes(command)) {
     try {
       var config = require(path.join(paths.local, 'chapman.json'));
     } catch (error) {
       return spinner.fail(chalk.red('Error: Config file not found!'));
     }
-    
+
     // Read Gulp tasks synchronously
     fs.readdirSync(gulpTasks).forEach(file => {
       const task = file.replace('.js', '');
-      
+
       if (config.tasks.includes(task)) {
         const gulpTask = require(path.join(gulpTasks, file));
         tasks[task] = gulpTask(gulp, plugins, config, spinner);

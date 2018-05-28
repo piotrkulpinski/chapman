@@ -5,13 +5,13 @@ module.exports = (gulp, plugins, config, spinner) => {
   return (done) => {
     const src = `${config.src}/scripts/*.js`;
     const dest = `${config.dest}/scripts`;
-    
+
     // var browserifyOptions = { transform: [] };
-    // 
+    //
     // if (config.vue) {
     //   browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
     // }
-    
+
     const browserifyOptions = {
       transform: plugins.babelify.configure({
         presets: [plugins.babelPresetEnv],
@@ -22,7 +22,7 @@ module.exports = (gulp, plugins, config, spinner) => {
       gulp.src(src),
       plugins.browserify(browserifyOptions),
       gulp.dest(dest),
-      
+
       // Minify JS
       plugins.rename({ suffix: '-min' }),
       plugins.uglify(),
@@ -30,7 +30,7 @@ module.exports = (gulp, plugins, config, spinner) => {
     ], () => {
       spinner.text = 'Building scripts...\n';
       plugins.browserSync.reload();
-      
+
       done();
     });
   };

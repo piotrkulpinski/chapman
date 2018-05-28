@@ -10,24 +10,24 @@ module.exports = (gulp, plugins, config, spinner) => {
       require('postcss-import')(),
       require('autoprefixer')(),
     ];
-    
+
     return pump([
       gulp.src(src),
       plugins.cssGlobbing({ extensions: ['.scss', '.css'] }),
       plugins.sass({ outputStyle: 'expanded', includePaths: ['node_modules'] }),
       plugins.postcss(postcssPlugins),
       gulp.dest(dest),
-      
+
       // Minify CSS
       plugins.rename({ suffix: '-min' }),
       plugins.cleanCss({ specialComments: 1 }),
       gulp.dest(dest),
-      
+
       // Inject new styles
       plugins.browserSync.stream(),
     ], () => {
       spinner.text = 'Building styles...\n';
-      
+
       done();
     });
   };

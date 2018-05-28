@@ -5,7 +5,7 @@ module.exports = (gulp, plugins, config, spinner) => {
   return (done) => {
     const src = `${config.src}/templates/*.{twig,html}`;
     const dest = `${config.dest}`;
-    
+
     return pump([
       gulp.src(src),
       plugins.twig({ errorLogToConsole: true }),
@@ -14,7 +14,7 @@ module.exports = (gulp, plugins, config, spinner) => {
     ], () => {
       spinner.text = 'Building templates...\n';
       plugins.browserSync.reload();
-      
+
       done();
     });
   };
