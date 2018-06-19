@@ -1,6 +1,6 @@
 /*
 ** Common - Base
-** -----------------------------------------------------------------------------*/
+** ----------------------------------------------------------------------------- */
 
 body {
   min-height: 100%;
@@ -10,7 +10,8 @@ body {
   line-height: $font-line-height;
 }
 
-a, button {
+a,
+button {
   transition-duration: $transition-duration;
   transition-property: color, background-color, border, opacity;
 }

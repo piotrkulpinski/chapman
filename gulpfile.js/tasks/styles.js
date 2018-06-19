@@ -11,7 +11,7 @@ module.exports = (gulp, plugins, config, spinner) => {
       require('autoprefixer')(),
     ];
 
-    return pump([
+    pump([
       gulp.src(src),
       plugins.cssGlobbing({ extensions: ['.scss', '.css'] }),
       plugins.sass({ outputStyle: 'expanded', includePaths: ['node_modules'] }),

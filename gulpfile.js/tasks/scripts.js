@@ -6,17 +6,15 @@ module.exports = (gulp, plugins, config, spinner) => {
     const src = `${config.src}/scripts/*.js`;
     const dest = `${config.dest}/scripts`;
 
-    // var browserifyOptions = { transform: [] };
-    //
-    // if (config.vue) {
-    //   browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
-    // }
-
-    const browserifyOptions = {
-      transform: plugins.babelify.configure({
+    const browserifyOptions = { transform: [
+      plugins.babelify.configure({
         presets: [plugins.babelPresetEnv],
-      })
-    };
+      }),
+    ] };
+
+    if (config.vue) {
+      browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
+    }
 
     return pump([
       gulp.src(src),
