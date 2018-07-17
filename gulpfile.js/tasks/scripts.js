@@ -1,6 +1,3 @@
-const path = require('path');
-const pump = require('pump');
-
 module.exports = (gulp, plugins, config, spinner) => {
   return (done) => {
     const src = `${config.src}/scripts/*.js`;
@@ -16,20 +13,22 @@ module.exports = (gulp, plugins, config, spinner) => {
       browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
     }
 
-    return pump([
-      gulp.src(src),
-      plugins.browserify(browserifyOptions),
-      gulp.dest(dest),
+    return gulp.src(src)
+      .pipe(plugins.plumber())
+      .pipe(plugins.browserify(browserifyOptions))
+      .pipe(gulp.dest(dest))
 
       // Minify JS
-      plugins.rename({ suffix: '-min' }),
-      plugins.uglify(),
-      gulp.dest(dest),
-    ], () => {
-      spinner.text = 'Building scripts...\n';
-      plugins.browserSync.reload();
+      .pipe(plugins.rename({ suffix: '-min' }))
+      .pipe(plugins.uglify())
+      .pipe(gulp.dest(dest))
 
-      done();
-    });
+      // Callback
+      .on('end', () => {
+        spinner.text = 'Building scripts...\n';
+        plugins.browserSync.reload();
+
+        done();
+      });
   };
 }

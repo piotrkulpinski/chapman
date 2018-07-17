@@ -3,17 +3,6 @@
 ** ----------------------------------------------------------------------------- */
 
 /*
-** Clearfix
-**/
-@mixin clearfix {
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
-
-/*
 ** Asset URL builder
 **
 ** @param {String} $type - Asset type, matching folder name

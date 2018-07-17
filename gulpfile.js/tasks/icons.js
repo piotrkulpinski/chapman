@@ -1,14 +1,11 @@
-const path = require('path');
-const pump = require('pump');
-
 module.exports = (gulp, plugins, config, spinner) => {
   return (done) => {
     const src = `${config.src}/assets/icons/*.svg`;
     const dest = `${config.dest}`;
 
-    return pump([
-      gulp.src(src),
-      plugins.svgSprite({
+    return gulp.src(src)
+      .pipe(plugins.plumber())
+      .pipe(plugins.svgSprite({
         mode: {
           symbol: {
             render: { css: false, scss: false },
@@ -17,13 +14,15 @@ module.exports = (gulp, plugins, config, spinner) => {
             sprite: 'icon-sprite.svg',
           }
         }
-      }),
-      gulp.dest(dest),
-    ], () => {
-      spinner.text = 'Building icons...\n';
-      plugins.browserSync.reload();
+      }))
+      .pipe(gulp.dest(dest))
 
-      done();
-    });
+      // Callback
+      .on('end', () => {
+        spinner.text = 'Building icons...\n';
+        plugins.browserSync.reload();
+
+        done();
+      });
   };
 }

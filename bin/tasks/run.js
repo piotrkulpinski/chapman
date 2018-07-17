@@ -1,5 +1,3 @@
-const chalk = require('chalk');
-
 module.exports = (gulp, plugins, config, spinner, tasks) => {
   const watchers = {
     icons: `${config.src}/assets/icons/*.svg`,

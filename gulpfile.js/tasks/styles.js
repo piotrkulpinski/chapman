@@ -1,6 +1,3 @@
-const path = require('path');
-const pump = require('pump');
-
 module.exports = (gulp, plugins, config, spinner) => {
   return (done) => {
     const src = `${config.src}/styles/*.scss`;
@@ -11,24 +8,25 @@ module.exports = (gulp, plugins, config, spinner) => {
       require('autoprefixer')(),
     ];
 
-    pump([
-      gulp.src(src),
-      plugins.cssGlobbing({ extensions: ['.scss', '.css'] }),
-      plugins.sass({ outputStyle: 'expanded', includePaths: ['node_modules'] }),
-      plugins.postcss(postcssPlugins),
-      gulp.dest(dest),
+    return gulp.src(src)
+      .pipe(plugins.plumber())
+      .pipe(plugins.cssGlobbing({ extensions: ['.scss', '.css'] }))
+      .pipe(plugins.sass({ outputStyle: 'expanded', includePaths: ['node_modules'] }))
+      .pipe(plugins.postcss(postcssPlugins))
+      .pipe(gulp.dest(dest))
 
       // Minify CSS
-      plugins.rename({ suffix: '-min' }),
-      plugins.cleanCss({ specialComments: 1 }),
-      gulp.dest(dest),
+      .pipe(plugins.rename({ suffix: '-min' }))
+      .pipe(plugins.cleanCss({ specialComments: 1 }))
+      .pipe(gulp.dest(dest))
 
       // Inject new styles
-      plugins.browserSync.stream(),
-    ], () => {
-      spinner.text = 'Building styles...\n';
+      .pipe(plugins.browserSync.stream())
 
-      done();
-    });
+      // Callback
+      .on('end', () => {
+        spinner.text = 'Building styles...\n';
+        done();
+      });
   };
 }
