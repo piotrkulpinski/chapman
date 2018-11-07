@@ -1,6 +1,6 @@
 {
   "name": "chapman",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Static website generator with an easy-to-use framework",
   "keywords": [
     "node",
