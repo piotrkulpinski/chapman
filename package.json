@@ -1,6 +1,6 @@
 {
   "name": "chapman",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Static website generator with an easy-to-use framework",
   "keywords": [
     "node",
@@ -36,6 +36,7 @@
     "browser-sync": "^2.23.6",
     "chalk": "^2.4.1",
     "del": "^3.0.0",
+    "fs-extra": "^6.0.1",
     "gulp": "^4.0.0",
     "gulp-browserify": "^0.5.1",
     "gulp-clean-css": "^3.9.4",
@@ -54,11 +55,6 @@
     "pump": "^3.0.0",
     "stylelint": "^9.2.1",
     "stylelint-config-sass-guidelines": "^5.0.0",
-    "vueify": "^9.4.1",
-    "webpack": "^4.8.3",
-    "webpack-stream": "^4.0.3"
-  },
-  "devDependencies": {
-    "fs-extra": "^6.0.1"
+    "vueify": "^9.4.1"
   }
 }
