@@ -36,7 +36,7 @@
 
 a,
 button,
-[type='button'] {
+[type="button"] {
   cursor: pointer;
   color: currentColor;
   text-decoration: none;
@@ -46,7 +46,20 @@ button,
   }
 }
 
+strong,
+b {
+  font-weight: bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
 img,
+svg,
+video,
+audio,
 iframe {
   display: block;
   max-width: 100%;

@@ -1,9 +1,17 @@
 const Toggle = {
-  triggers: document.querySelectorAll('[data-toggle]'),
+  triggers: [],
 
-  init() {
+  init(element = document) {
+    const triggers = element.querySelectorAll('[data-toggle]');
+
+    if (triggers.length) {
+      this.triggers = triggers;
+    }
+
     if (this.triggers.length) {
-      [].forEach.call(this.triggers, trigger => trigger.addEventListener('click', this.handleToggle.bind(this)));
+      [].forEach.call(this.triggers, trigger => {
+        trigger.addEventListener('click', this.handleToggle);
+      });
     }
   },
 

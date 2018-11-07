@@ -5,24 +5,19 @@
 **/
 
 import svg4everybody from 'svg4everybody';
+import objectFitImages from 'object-fit-images';
 
-import toggle from './modules/toggle';
-import scroll from './modules/scroll';
+import ui from './utils/ui';
+import panels from './utils/panels';
 
 (function () {
-  toggle.init();
-  scroll.init();
+  // UI
+  ui.init();
 
+  // Utils
+  panels.init();
+
+  // Polyfills
   svg4everybody();
+  objectFitImages();
 })();
-
-var closePanels = function () {
-  const bodyClasses = ['has-nav-open'];
-  document.body.classList.remove(...bodyClasses);
-};
-
-document.addEventListener('keyup', function (ev) {
-  if (ev.keyCode === 27) {
-    closePanels();
-  }
-});

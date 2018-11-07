@@ -1,4 +1,7 @@
 /*
-** Setup - Placeholders
+** Utils - Hamburger
 ** ----------------------------------------------------------------------------- */
 
+.u-hamburger {
+  @include u-hamburger(2em, 1.75em, 2px);
+}

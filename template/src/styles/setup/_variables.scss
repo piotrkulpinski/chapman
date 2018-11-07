@@ -16,38 +16,8 @@ $font-arial:            'Arial', 'Helvetica Neue', Helvetica, sans-serif !defaul
 
 $font-color:            $color-black !default;
 $font-family:           $font-arial !default;
-$font-size:             1.8em !default;
-$font-line-height:      1.6 !default;
-
-// Base path for assets
-$base-path:             '..' !default;
+$font-size:             1.6em !default;
+$font-line-height:      1.5 !default;
 
 // Transitions
 $transition-duration:   0.25s !default;
-
-// Grid definitions
-$grid-breakpoints: (
-  xs: (
-    min-width: 0,
-    container: 450px,
-    gutter: 20px,
-    columns: 2
-  ),
-  sm: (
-    min-width: 490px,
-    gutter: 20px,
-    columns: 4
-  ),
-  md: (
-    min-width: 680px,
-    container: 620px,
-    gutter: 30px,
-    columns: 6
-  ),
-  lg: (
-    min-width: 992px,
-    container: 1032px,
-    gutter: 30px,
-    columns: 12
-  )
-) !default;
