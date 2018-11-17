@@ -9,16 +9,22 @@ module.exports = (gulp, plugins, config, spinner) => {
       }),
     ] };
 
-    return pump([
-      gulp.src(src),
-      plugins.browserify(browserifyOptions),
-      plugins.minify(),
-      gulp.dest(dest),
-    ], () => {
-      spinner.text = 'Building scripts...\n';
-      plugins.browserSync.reload();
+    if (config.vue) {
+      browserifyOptions.transform.push([{ _flags: { debug: true } }, plugins.vueify]);
+    }
 
-      done();
-    });
+    return gulp.src(src)
+      .pipe(plugins.plumber())
+      .pipe(plugins.browserify(browserifyOptions))
+      .pipe(plugins.minify())
+      .pipe(gulp.dest(dest))
+
+      // Callback
+      .on('end', () => {
+        spinner.text = 'Building scripts...\n';
+        plugins.browserSync.reload();
+
+        done();
+      });
   };
 }
