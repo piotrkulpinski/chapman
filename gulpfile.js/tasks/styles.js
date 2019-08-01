@@ -15,9 +15,14 @@ module.exports = (gulp, plugins, config, spinner) => {
       .pipe(plugins.postcss(postcssPlugins))
       .pipe(gulp.dest(dest))
 
+      // Inject new styles
+      .pipe(plugins.browserSync.stream())
+
       // Minify CSS
+      // .pipe(plugins.sourcemaps.init())
       .pipe(plugins.rename({ suffix: '-min' }))
       .pipe(plugins.cleanCss({ specialComments: 1 }))
+      // .pipe(plugins.sourcemaps.write())
       .pipe(gulp.dest(dest))
 
       // Inject new styles

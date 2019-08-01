@@ -3,6 +3,8 @@
 ** ----------------------------------------------------------------------------- */
 
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
   color: $font-color;
   font-family: $font-family;
@@ -12,6 +14,5 @@ body {
 
 a,
 button {
-  transition-duration: $transition-duration;
-  transition-property: color, background-color, border, opacity;
+  @extend %link-transition;
 }

@@ -1,16 +1,16 @@
 {% include '../partials/head.twig' %}
 
-<body class="{{ body_class }}">
+<body>
     <div class="body-bag">
-        {% include '../partials/page-head.twig' %}
+        {% include '../sections/page-head.twig' %}
 
         {% block content %}
             No content
         {% endblock %}
-
-        {% include '../partials/page-foot.twig' %}
     </div>
     <!-- /.body-bag -->
+
+    {% include '../sections/page-foot.twig' %}
 
     {% include '../partials/scripts.twig' %}
 </body>
