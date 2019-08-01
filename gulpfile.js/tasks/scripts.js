@@ -20,16 +20,12 @@ module.exports = (gulp, plugins, config, spinner) => {
     return gulp.src(src)
       .pipe(plugins.plumber())
       .pipe(plugins.browserify(browserifyOptions))
-<<<<<<< HEAD
-      .pipe(plugins.minify())
-=======
       .pipe(gulp.dest(dest))
 
       // Minify JS
       // .pipe(plugins.sourcemaps.init())
       .pipe(plugins.minify())
       // .pipe(plugins.sourcemaps.write())
->>>>>>> Update styles and templates with the latest solutions
       .pipe(gulp.dest(dest))
 
       // Inject new styles
