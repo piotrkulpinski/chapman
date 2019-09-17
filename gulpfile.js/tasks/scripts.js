@@ -7,6 +7,7 @@ module.exports = (gulp, plugins, config, spinner) => {
     browserifyOptions.transform.push([
       plugins.babelify.configure({
         presets: [plugins.babelPresetEnv],
+        ignore: [new RegExp('node_modules\/(?!gsap)')],
       }),
     ]);
 
