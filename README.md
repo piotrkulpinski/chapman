@@ -2,7 +2,7 @@
 
 Chapman is static site generator. It consists of very opinionated Gulp workflow (with support of modern web tools like Browserify, JavaScript ES6 support, CSS preprocessors, file minificators, image optimizers) and basic directories & files structure that is generated during each project initialization.
 
-I bet above description haven't been very helpful in understanding what Chapman actually does, so let's see how to use it.
+ I bet the description above hasn’t been very helpful in understanding what Chapman actually does, so let’s see how to use it.
 
 ## Requirements
 
