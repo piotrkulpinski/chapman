@@ -2,14 +2,10 @@ const Toggle = {
   triggers: [],
 
   init(element = document) {
-    const triggers = element.querySelectorAll('[data-toggle]');
-
-    if (triggers.length) {
-      this.triggers = triggers;
-    }
+    this.triggers = Array.from(element.querySelectorAll('[data-toggle]'));
 
     if (this.triggers.length) {
-      [].forEach.call(this.triggers, trigger => {
+      this.triggers.forEach(trigger => {
         trigger.addEventListener('click', this.handleToggle);
       });
     }

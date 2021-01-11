@@ -2,14 +2,10 @@ const Scroller = {
   triggers: [],
 
   init(element = document) {
-    const triggers = element.querySelectorAll('[data-scroll], a[href^="#"]');
-
-    if (triggers.length) {
-      this.triggers = triggers;
-    }
+    this.triggers = Array.from(element.querySelectorAll('[data-scroll], a[href^="#"]'));
 
     if (this.triggers.length) {
-      [].forEach.call(this.triggers, trigger => trigger.addEventListener('click', this.handleScroll.bind(this)));
+      this.triggers.forEach(trigger => trigger.addEventListener('click', this.handleScroll.bind(this)));
     }
 
     if (window.location.hash) {

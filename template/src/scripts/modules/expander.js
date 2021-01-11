@@ -2,14 +2,10 @@ const Expander = {
   triggers: [],
 
   init(element = document) {
-    const triggers = element.querySelectorAll('[data-expand]');
-
-    if (triggers.length) {
-      this.triggers = triggers;
-    }
+    this.triggers = Array.from(element.querySelectorAll('[data-expand]'));
 
     if (this.triggers.length) {
-      [].forEach.call(this.triggers, trigger => {
+      this.triggers.forEach(trigger => {
         trigger.addEventListener('click', this.handleExpander);
       });
     }

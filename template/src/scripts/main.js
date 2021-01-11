@@ -4,9 +4,6 @@
 ** --------------------------------
 **/
 
-import svg4everybody from 'svg4everybody';
-import objectFitImages from 'object-fit-images';
-
 import ui from './utils/ui';
 import panels from './utils/panels';
 
@@ -16,8 +13,4 @@ import panels from './utils/panels';
 
   // Utils
   panels.init();
-
-  // Polyfills
-  svg4everybody();
-  objectFitImages();
 })();
